@@ -1,0 +1,24 @@
+---
+title: "Code for UserNetR"
+author: "Douglas Luke"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Code for UserNetR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette contains the R code used to produce the network analyses, results, and figures in my
+book: *A User's Guide to Network Analysis in R*. 
+
+**Dummy file for now.**
+
+
