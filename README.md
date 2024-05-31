@@ -3,16 +3,16 @@
 UserNetR
 ========
 
-The goal of UserNetR is to ...
+The goal of UserNetR2 is to ...
 
 Installation
 ------------
 
-You can install UserNetR from github with:
+You can install UserNetR2 from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("DougLuke/UserNetR")
+devtools::install_github("DougLuke/UserNetR2")
 ```
 
 Example
