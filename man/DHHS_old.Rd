@@ -1,8 +1,8 @@
 \docType{data}
-\name{DHHS}
-\alias{DHHS}
+\name{DHHS_old}
+\alias{DHHS_old}
 \title{DHHS Collaboration Network}
-\format{An igraph network object with 54 nodes and 477 edges}
+\format{A network object with 54 nodes and 477 edges}
 \description{
   This data set contains the DHHS Collaboration network.
   This is an undirected network with 54 nodes and 477

@@ -1,8 +1,8 @@
 \docType{data}
-\name{lhds}
-\alias{lhds}
+\name{lhds_old}
+\alias{lhds_old}
 \title{Local Health Department communication network}
-\format{An igraph network object with 1,283 vertices and 2,708 edges}
+\format{A network object with 1,283 vertices and 2,708 edges}
 \description{
   This data set contains the United States Local Health Department (LHD) leadership network data for use with the Sage text, "Introduction to Exponential Random Graph Modeling" by Jenine K. Harris.
 }

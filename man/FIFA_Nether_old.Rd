@@ -1,8 +1,8 @@
 \docType{data}
-\name{FIFA_Nether}
-\alias{FIFA_Nether}
+\name{FIFA_Nether_old}
+\alias{FIFA_Nether_old}
 \title{FIFA Netherlands 2010 World Cup Soccer Network}
-\format{An igraph network object with 11 vertices and 108 arcs}
+\format{A network object with 11 vertices and 108 arcs}
 \description{
   This network object contains the passing data among the
   starting players for the 2010 World Cup Netherlands team.

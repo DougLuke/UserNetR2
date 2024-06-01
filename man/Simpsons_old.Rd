@@ -1,10 +1,10 @@
-\name{Simpsons}
-\alias{Simpsons}
+\name{Simpsons_old}
+\alias{Simpsons_old}
 \docType{data}
 \title{Simpsons Interactions}
 
 
-\format{An igraph network object with 15 vertices and 24 edges}
+\format{A network object with 15 vertices and 24 edges}
 
 \description{
   This network object contains interaction ties among characters in

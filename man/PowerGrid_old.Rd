@@ -1,8 +1,8 @@
 \docType{data}
-\name{PowerGrid}
-\alias{PowerGrid}
+\name{PowerGrid_old}
+\alias{PowerGrid_old}
 \title{Power Grid boardgame network}
-\format{An igraph network object with 42 vertices and 87 edges}
+\format{A network object with 42 vertices and 87 edges}
 \description{
   This network object contains the connections among U.S.
   cities as they appear in the boardgame Power Grid,

@@ -2,7 +2,7 @@
 \name{Facebook}
 \alias{Facebook}
 \title{Facebook Network of Douglas Luke in 2013}
-\format{A network object with 93 vertices and 323 edges}
+\format{An igraph network object with 93 vertices and 323 edges}
 \description{
   This igraph network object contains the Facebook
   friends of Douglas Luke and their friendship connections, as

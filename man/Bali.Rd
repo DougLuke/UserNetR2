@@ -2,7 +2,7 @@
 \name{Bali}
 \alias{Bali}
 \title{Jemaah Islamiyah 2002 Bali Terrorist Network}
-\format{A network object with 17 vertices and 126 edges}
+\format{An igraph network object with 17 vertices and 126 edges}
 \description{
   This network shows the interactions among the Jemaah
   Islamiyah terrorist group that carried out the bombings

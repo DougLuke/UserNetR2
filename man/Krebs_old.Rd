@@ -1,8 +1,8 @@
 \docType{data}
-\name{Krebs}
-\alias{Krebs}
+\name{Krebs_old}
+\alias{Krebs_old}
 \title{9-11 hijackers network}
-\format{An igraph network object with 19 vertices and 27 edges}
+\format{A network object with 19 vertices and 27 edges}
 \description{
   This network shows the contacts among the terrorists who
   carried out the 9-11 hijackings in 2001.

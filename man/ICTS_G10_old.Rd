@@ -1,10 +1,10 @@
-\name{ICTS_G10}
-\alias{ICTS_G10}
+\name{ICTS_G10_old}
+\alias{ICTS_G10_old}
 \docType{data}
 \title{ICTS Grants Collaboration}
 
 
-\format{An igraph network object with 493 vertices and 1359 edges}
+\format{A network object with 493 vertices and 1359 edges}
 
 \description{
   This network object contains collaboration ties among 493 members of

@@ -1,8 +1,8 @@
 \docType{data}
-\name{Moreno}
-\alias{Moreno}
+\name{Moreno_old}
+\alias{Moreno_old}
 \title{Moreno Sociogram}
-\format{An igraph network object with 33 vertices and 46 edges}
+\format{A network object with 33 vertices and 46 edges}
 \description{
   This network object contains friendship ties among a
   4th grade class.

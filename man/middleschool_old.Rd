@@ -1,8 +1,8 @@
 \docType{data}
-\name{middleschool}
-\alias{middleschool}
+\name{middleschool_old}
+\alias{middleschool_old}
 \title{Middleschool Friendship Network}
-\format{An igraph network object with 37 vertices and 179 arcs}
+\format{A network object with 37 vertices and 179 arcs}
 \description{
   This network object contains friendship ties among a
   class of 6th grade students in California.

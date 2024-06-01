@@ -3,7 +3,7 @@
 \alias{hwd}
 \title{Hollywood Movie-Actor affiliation network}
 \format{
-  An \code{igraph} network object with 1365 vertices (160 movies,
+  An igraph network object with 1365 vertices (160 movies,
   1205 actors) and 1600 edges.
   }
 \description{
