@@ -8,11 +8,16 @@
   cities as they appear in the boardgame Power Grid,
   published by Rio Grande games.
 }
+
 \section{Node characteristics}{
-  \itemize{ \item \code{vertex.name} - Name of the city.  }
+  \itemize{ \item \code{vertex.name} - Name of the city.  
+    \item \code{lat} - Latitude of city
+    \item \code{long} - Longitude of city
+  
+  }
 }
 
-\section{Node characteristics:}{
+\section{Edge characteristics:}{
   \itemize{ \item \code{cost} - Cost to connect the two
   cities, according to the game rules.  }
 }
