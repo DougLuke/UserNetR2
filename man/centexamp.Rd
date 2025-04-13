@@ -13,7 +13,7 @@
   different ways to assess centrality in a network.
 }
 \section{Node characteristics:}{
-  \itemize{ \item \code{vertex.names} - Letter vertex label 
+  \itemize{ \item \code{name} - Name of vertex
     \item \code{x} - x coordinates for plotting
     \item \code{y} - y coordinates for plotting
     }
