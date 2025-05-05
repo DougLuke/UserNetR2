@@ -3,7 +3,7 @@
 UserNetR
 ========
 
-The goal of UserNetR2 is to ...
+The goal of UserNetR2 is to ... [testing]
 
 Installation
 ------------
