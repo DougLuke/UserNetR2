@@ -1,0 +1,288 @@
+---
+title: 'Markdown Document for Replicability Example'
+author: "Douglas Luke"
+date: "May 6, 2025"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    code_folding: show
+    highlight: pygments
+    toc: yes
+    toc_float:
+      collapsed: no
+---
+
+
+# The Network Analysis 'Five-Number Summary'
+
+```{r chapfivesetup,message=FALSE,warning=FALSE}
+library(igraph)
+library(UserNetR2)
+options(width=50, digits=3)
+```
+
+## Network Analysis in R: Where to Start
+
+How should you start when you want to do a network analysis in R? The
+answer to this question rests of course on the analytic questions you
+hope to answer, the state of the network data that you have available,
+and the intended audience(s) for the results of this work. The good
+news about performing network analysis in R is that, as will be seen
+in subsequent chapters, R provides a multitude of available network
+analysis options. However, it can be daunting to know exactly where
+to start.
+
+In 1977, John Tukey introduced the five-number summary as a simple
+and quick way to summarize the most important characteristics of
+a univariate distribution. Networks are more
+complicated than single
+variables, but it is also possible to explore a set of important
+characteristics of a social network using a small number of procedures in
+R.
+
+In this chapter, we will focus on two initial steps that are almost always
+useful for beginning a network analysis: simple visualization,
+and basic description using a 'five-number summary.'
+This chapter also serves as a gentle
+introduction to basic network analysis in R, and demonstrates how
+quickly this can be done.
+
+## Preparation
+
+
+Similar to most types of statistical analyses using R, the first
+steps are to load appropriate packages (installing them first if
+necessary), and then making data available for the analyses. The
+\texttt{igraph} network analysis package will be used
+here and through much of the book for the analyses. The data used in this book and chapter are from 
+the \texttt{UserNetR2} package
+that accompanies the book. (See the previous chapter for instructions on how to download and 
+install the data package.) The specific dataset used here is called
+\texttt{Moreno}, and contains a friendship network of fourth
+grade students first collected by Jacob Moreno in the 1930s.
+
+
+To access an existing network data object in R, we would first load the appropriate
+network analysis package (i.e., \texttt{igraph}) as well as the
+data package itself (i.e., \texttt{UserNetR2}). (These steps will
+not always be shown in the subsequent chapters, but these
+need to be done before embarking on new analyses.) Once we 
+have the packages loaded, then we will have access to the
+network data file(s). We can use the ubiquitous \texttt{summary()}
+function to make sure that R (and igraph) can see the
+data object and know how to use it.
+
+```{r tstMorenoSummary}
+library(igraph)
+library(UserNetR2)
+summary(Moreno)
+```
+
+This shows that R recognizes Moreno as an igraph network object. 
+We will explain some of these summary elements in Chapter \ref{chap:data_manage}
+when we start looking at how to manage network data in R.
+
+## Simple Visualization
+
+The first step in network analysis is often to just take a
+look at the network. Network visualization is critical, but as
+Chapters \ref{chap:plotbasic} through \ref{chap:plotadv} indicate,
+effective network graphics take careful planning and execution
+to produce. That being
+said, an informative network plot can be produced with one
+simple function call. The only added complexity here is
+that we are using information about the network members'
+gender to color code the nodes. The syntax details
+underlying this example will be covered in greater depth
+in chapters \ref{chap:data_manage}, \ref{chap:plotbasic}, and
+\ref{chap:graphicdesign}.
+
+
+```{r plotmorenotext, eval=FALSE}
+plot(Moreno,
+     vertex.color = V(Moreno)$gender,
+     vertex.size = 15)
+```
+
+
+```{r plotmoreno, fig.lp="fig:", fig.cap = 'Friendship ties among a 4th grade class, from Moreno',out.width='80%', fig.asp=.75, fig.align='center',echo=FALSE}
+op <- par(mar=c(0,0,0,0))
+plot(Moreno,
+     vertex.color = V(Moreno)$gender,
+     vertex.size = 15)
+par(op)
+```
+
+
+The resulting plot makes it immediately clear how the friendship
+network is made up of two fairly distinct subgroups, based on
+gender. A quickly produced network graphic like this can often
+reveal the most important structural patterns contained in the social
+network.
+
+## Basic Description
+
+Tukey's original five-number summary was intended to describe the
+most important distributional characteristics of a variable,
+including its central tendency and variability, using
+easy to produce statistical summaries. Similarly, using only
+a few functions and lines of R code, we can produce a network
+five-number summary that tells us how \emph{large} the network
+is, how \emph{densely} connected it is, whether the network is made
+up of one or more distinct \emph{groups}, how \emph{compact} it is,
+and how \emph{clustered} are the network members.
+
+### Size
+
+The most basic characteristic of a network is its size. The size
+is simply the number of members, usually called nodes, vertices or actors.
+The \texttt{gorder()} function is the easiest way to get this.
+The basic summary of an \texttt{igraph} network object also provides
+this information, among other things. The Moreno network has
+33 members, based on the \texttt{gorder()} function results and summary calls.
+
+
+```{r summnetsize}
+gorder(Moreno)
+summary(Moreno)
+```
+
+### Density
+
+Of all the basic characteristics of a social network, density is
+among the most important as well as being one of the easiest to
+understand. Density is the proportion of observed ties (also
+called edges, arcs, or relations) in a network to the maximum
+number of possible ties. Thus, density is a ratio that can range
+from 0 to 1. The closer to 1 the density is, the more interconnected
+is the network.
+
+Density is relatively easy to calculate, although the underlying
+equation differs based on whether the network ties are directed
+or undirected (see Chapter \ref{chap:directed} for more information
+on directed networks). An undirected tie is one with no direction. Collaboration
+would be a good example of an undirected tie; if A collaborates with
+B, then by necessity B is also collaborating with A. Directed ties,
+on the other hand, have direction. Money flow is a good example of
+a directed tie. Just because A gives money to B, does not necessarily
+mean that B reciprocates. For a directed network, the maximum
+number of possible ties among \emph{k} actors is $k*(k-1)$, so the
+formula for density is:
+
+\begin{displaymath} \frac{L}{k \times (k-1)} \end{displaymath},
+
+where \emph{L} is the number of observed ties in the network. Density, as
+defined here, does not allow for ties between a particular node
+and itself (called a loop).
+
+For an undirected network the maximum number of ties is
+$k*(k-1)/2$ because non-directed ties should only be counted
+once for every dyad (\emph{i.e.,} pair of nodes). So, density for
+an undirected network becomes:
+
+\begin{displaymath} \frac{2L}{k \times (k-1)} \end{displaymath}.
+
+The information obtained in the previous section told us that
+the Moreno network has 33 nodes and 46 non-directed edges. We
+could then use R to calculate that by hand, but it is easier
+to simply use the \texttt{edge\_density()} function.
+
+```{r summdensity}
+den_hand <- 2*46/(33*32)
+den_hand
+edge_density(Moreno)
+```
+
+### Components
+
+A social network is sometimes split into various subgroups. Chapter
+\ref{chap:subgroups} will describe how to use R to identify a wide
+variety of network groups and communities. However, a very basic
+type of subgroup in a network is a component. An informal definition
+of a component is a subgroup in which all actors are connected, directly or indirectly. 
+The number of components in a network can be obtained
+with the \texttt{count\_components()} function. The more general
+function \texttt{components} returns more information about the subgroups,
+including the membership, size, and number of separate components.
+(Note that the meaning
+of components is more complicated for directed networks. See
+`?components` for more information.)
+
+
+```{r summcomponents}
+count_components(Moreno)
+```
+
+### Diameter
+
+Although the overall size of a network may be interesting, a more
+useful characteristic of the network is how compact it is, given its
+size and degree of interconnectedness (i.e., density). The diameter of a network
+is a useful measure of this compactness. A path is the series of
+steps required to go from node A to node B in a network. The shortest
+path is the shortest number of steps required to connect the two nodes. 
+The diameter then for
+an entire network is the longest of the shortest paths across all
+pairs of nodes. This is a measure of compactness or network efficiency
+in that the diameter reflects the 'worst case scenario' for sending
+information (or any other resource) across a network. Although social
+networks can be very large, they can still have small diameters because
+of their density and clustering (see below).
+
+The only complicating factor for examining the diameter of a network
+is that it is formally undefined for networks that contain more than one component.
+A typical approach when there are multiple components is to examine
+the diameter of the largest component in the network. For the
+Moreno network there are two components (see Figure \ref{fig:plotmoreno}).
+The smaller component only has 2 nodes. Therefore, we will want to use the
+larger component that contains the other 31 connected students. 
+
+Fortunately, the \texttt{diameter()} function in \texttt{igraph} automatically
+takes care of this and reports the diameter for the largest component
+in a multicomponent network. A diameter
+of 11 suggests that this network is not very compact. It takes 11 steps
+to connect the two nodes that are situated the furthest apart in this
+friendship network.
+
+
+```{r summdiameter}
+diameter(Moreno)
+```
+
+### Clustering coefficient
+
+
+One of the fundamental characteristics of social networks (compared
+to random networks) is the presence of clustering, or the tendency
+to formed closed triangles. The process of closure occurs in a social
+network when two people who share a common friend also become friends
+themselves. This can be measured in a social network by examining
+its transitivity. Transitivity is defined as the proportion of closed
+triangles (triads where all three ties are observed) to the total
+number of open and closed triangles (triads where either two or all
+three ties are observed). Thus, like density, transitivity is a ratio
+that can range from 0 to 1. Transitivity of a network can be calculated
+using the \texttt{transitivity()} function. The transitivity for the
+4th graders is .29, suggesting a moderate level of clustering
+in the classroom network.
+
+
+```{r summtrans}
+transitivity(Moreno)
+```
+
+
+In the rest of this book, we will examine in more detail how the
+power of R can be harnessed to explore and study the characteristics
+of social networks. The preceding examples show that basic plots
+and statistics can be easily obtained. The meaning of these statistics
+will always rest on the theories and hypotheses that the analyst
+brings to the task, as well as history and experience doing network
+analysis with other similar types of social networks.
+
+```{r fivedetachigraph,results='hide'}
+detach("package:igraph", unload=TRUE)
+```
+
+
