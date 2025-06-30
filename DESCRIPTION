@@ -1,8 +1,8 @@
 Package: UserNetR2
 Type: Package
 Title: Data sets for A User's Guide to Network Analysis in R (2nd Edition)
-Version: 1.35
-Date: 2025-05-05
+Version: 2.01
+Date: 2025-06-30
 Authors@R: person("Douglas", "Luke", email = "dluke@wustl.edu",
   role = c("aut", "cre"))
 Description: These are a collection of network data sets that are used as examples.
