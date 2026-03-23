@@ -12,6 +12,8 @@
   by Valdis Krebs. Using publically available data at the time,
   he constructed this contact network to illustrate the contact ties
   that the 19 hijackers had prior to the attack.
+  
+  Testing update.
 }
 \section{Node characteristics:}{
   \itemize{ \item \code{name} - Full name \item
